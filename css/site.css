@@ -1,3 +1,5 @@
+
+
 form {
     max-width:400px;
     margin: 0 auto;
@@ -51,7 +53,7 @@ button{
 button:hover{
     background-color: #0056b3;
 }
- 
+ /* error message */
 
 #messageDiv {
     color: red;
@@ -59,6 +61,8 @@ button:hover{
     margin-top: 10px;
 
 }
+
+/* Radio Buttons */
 
 .result {
     margin-top:20px;

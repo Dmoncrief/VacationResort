@@ -52,3 +52,40 @@ button:hover{
     background-color: #0056b3;
 }
  
+
+#messageDiv {
+    color: red;
+    font-style: italic;
+    margin-top: 10px;
+
+}
+
+.result {
+    margin-top:20px;
+    padding:10px;
+    border: 1px solid #ccc;
+    border-radius:4px;
+
+}
+
+
+.result p {
+    margin:5px 0;
+}
+
+
+input[type="radio"]
+input[type="checkbox"] {
+    margin-right:5px;
+}
+
+div.t{
+    text-align: center;
+}
+
+#about{
+    text-align:center;
+    font-family: EB garamond;
+    font-size: 25px;
+}
+

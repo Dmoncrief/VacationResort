@@ -69,3 +69,5 @@
      function calculateDiscountedRoomRate(roomRate, discountPercent) {
         
      }
+
+

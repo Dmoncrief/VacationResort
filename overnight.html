@@ -46,7 +46,7 @@
     <form id="costEstimator" action="">
       <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" >
+        <input type="text" id="name" name="name" required>
       </div>
 
       <label for="email">Email:</label>
@@ -54,11 +54,11 @@
       
       <div>
         <label for="checkInDate">Check-in Date:</label>
-        <input type="date" id="checkInDate" name="checkInDate">
+        <input type="date" id="checkInDate" name="checkInDate" required>
       </div>
       <div>
         <label for="numNights">Number of Nights:</label>
-        <input type="number" id="numNights" name="numNights" min="1" max="28">
+        <input type="number" id="numNights" name="numNights" min="1" max="28" required>
       </div>
       <div>
         <label>Room Type:</label><br>
@@ -71,12 +71,12 @@
       </div>
       <div>
         <label for="numAdults">Number of Adults:</label>
-        <input type="number" id="numAdults" name="numChildren" min="1" max="4">
+        <input type="number" id="numAdults" name="numChildren" min="1" max="4" required>
       </div>
 
       <div>
         <label for="numAdults">Number of Children:</label>
-        <input type="number" id="numChildren" name="numChildren" min="0" max="4">
+        <input type="number" id="numChildren" name="numChildren" min="0" max="4" required>
       </div>
       <div>
         <label>Discount:</label><br>
@@ -88,7 +88,7 @@
         <label for="military">Military (20%)</label>
       </div>
 
-      <button id="submitButton">Estimate Stay Cost</button>
+      <input id="submitButton" type="submit" value="Estimate Stay Cost">
     </form>
     <div id="messageDiv"></div>
 

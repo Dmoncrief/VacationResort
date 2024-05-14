@@ -12,17 +12,13 @@
     const numAdults = parseInt(document.getElementById("numAdults").value);
     const nuumChildren = parseInt(document.getElementById("numChildren").value);
     const discount = document.getElementsByName("discount");
-   // const submitButton = document.getElementById("submitButton");
+    const submitButton = document.getElementById("submitButton");
 
+
+   window.onload = function() {
+      submitButton.onclick = submitReservation
+   }
     
-
-
-    // calulate stay cost 
-    // const roomRate = getRoomRate(checkInDate, roomType);
-    // const discountPerecent = getDiscountPercent(discount);
-    // const discountedRoomRate = calculateDiscountedRoomRate(roomRate, discountPercent);
-    // const tax = calulateTax(discountedRoomRate);
-    // const totalCost = calculateTotalCost(discountedRoomRate, tax);
 
     // Display Results
     
@@ -42,8 +38,30 @@
    
      function submitReservation(event) {
         event.preventDefault();
+      //get all of our input (starting values)
 
-        console.log(getRoomRate());
+      let numberOfNights;
+      let discountPercent;
+
+      //compute the unknown
+        // you will want to pass the right values into getRoomRate so that it can do it's calculation correctly
+        let roomRate = getRoomRate();
+
+        let originalRoomCost = roomRate * numberOfNights;
+
+        //look at the radio buttons
+        let discountAmount;
+
+        let discountedRoomCost = originalRoomCost - discountAmount;
+        
+        let taxRate = 0.12;
+        let taxAmount;
+        let total = discountedRoomCost = taxAmount;
+
+
+
+      //display our results.
+        console.log(roomRate);
        
         console.log("Reservation has been submitted");
      }

@@ -57,7 +57,7 @@
 
     }
 
-    //get value from radion button to pss into method
+    //get value from radio button to pss into method
     //this helper funtion is specifically to get the discount a user has
 
  function getDiscountPercent(discount) {
@@ -82,7 +82,7 @@
 
       //make sure the email and name are not empty
       if(!nameVal || !emailVal){
-        alert("Please fill out all feilds")
+        alert("Please fill out all fields")
       } else {
          // we can decide someting to do woth those values later
          

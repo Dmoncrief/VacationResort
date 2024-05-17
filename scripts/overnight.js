@@ -13,10 +13,13 @@
     const numChildren = document.getElementById("numChildren");
     const discount = document.getElementsByName("discount");
     const submitButton = document.getElementById("submitButton");
+    const finalEstimate = document.getElementById("finalEstimate");
 
 
-   window.onload = function(event) {
-      submitButton.addEventListener('click',()=>{
+   window.onload = function() {
+    
+      submitButton.addEventListener('click',(event)=>{
+      
          submitReservation(event);
       })
    }
@@ -63,9 +66,9 @@
  function getDiscountPercent(discount) {
    // Example implementation
    if (discount === "AAA/Senior") {
-       return 10;
+       return .10;
    } else if (discount === "Military") {
-       return 20;
+       return .20;
    } else {
        return 0;
    }
@@ -76,20 +79,35 @@
      function submitReservation(event) {
         event.preventDefault();
       //get all of our input (starting values)
+      //name and email
       let nameVal = name.value;
       let emailVal = email.value;
 
 
       //make sure the email and name are not empty
       if(!nameVal || !emailVal){
+         //want to find a more user friendly way to do this
         alert("Please fill out all fields")
       } else {
          // we can decide someting to do woth those values later
          
       }
 
+      
+      let discountPercent = 0;
+      
     
-      let discountPercent; 
+      discount.forEach((discountRadioButtonelement) => {
+
+         if(discountRadioButtonelement.checked){
+
+          discountPercent = getDiscountPercent(discountRadioButtonelement.value);
+           
+         }
+      });
+
+   
+   
       let numberOfNights = parseInt(numNights.value); 
  let totalGuests = parseInt(numAdults.value) + parseInt(numChildren.value);
  let date = new Date(checkInDate.value);
@@ -97,21 +115,42 @@
  //room type should be coming from radio button
 
 
+ let selectedRoomType;
+
+      roomType.forEach((roomTypeRadioButtonElememt)=>{
+
+         if(roomTypeRadioButtonElememt.checked){
+            selectedRoomType = roomTypeRadioButtonElememt.value;
+         } else{
+            //a print label element should come up on the screen 
+            //directing them to select an option
+         }
+
+      })
+
+      //TODO: create logic to get that the total number of guests
+      //is not greater than the max occupancy of the room!
+
+
+
+
       //compute the unknown
         // you will want to pass the right values into getRoomRate so that it can do it's calculation correctly
-         let roomRate = getRoomRate(date.getMonth(),"King");
+         let roomRate = getRoomRate(date.getMonth(),selectedRoomType);
          console.log(`Room Rate: ${roomRate}`)
 
-       // let originalRoomCost = roomRate * numberOfNights;
+        let originalRoomCost = roomRate * numberOfNights;
 
-        //look at the radio buttons
-        let discountAmount; //using discount funtion we created
+        let discountedRoomCost = calculateDiscountedRoomRate(originalRoomCost,discountPercent)
 
-       // let discountedRoomCost = originalRoomCost - discountAmount;
+   
+   
         
         let taxRate = 0.12;
-        let taxAmount;
-       // let total = discountedRoomCost = taxAmount;
+        let taxAmount = discountedRoomCost * taxRate;
+        let total = discountedRoomCost + taxAmount;
+
+        console.log(total);
 
 
 
@@ -120,12 +159,36 @@
        
         console.log("Reservation has been submitted");
 
-      
+        finalEstimate.placeholder = `$${total}0`;
+
+        //just creating an object to collect all of the properties on this reservation
+
+        let reservation = {
+         name: nameVal,
+         email:emailVal,
+         checkInDate: date.getDate(),
+         discountPercent: discountPercent,
+         roomType: selectedRoomType,
+         numberOfNights: numberOfNights,
+         numberOfGuests: totalGuests,
+         totalCost: total
+        }
+
+        console.log(reservation);
+        console.log("----------------")
+        console.log(reservation.name)
+        console.log(total);
        
      }
+
      
-     function calculateDiscountedRoomRate(roomRate, discountPercent) {
-        
+     function calculateDiscountedRoomRate(originalRoomCost, discountPercent) {
+        let discountAmount = parseInt(originalRoomCost * discountPercent); //using discount funtion we created
+         let totalAfterDiscount = originalRoomCost - discountAmount;
+
+        console.log(totalAfterDiscount);
+
+        return totalAfterDiscount;
      }
 
 

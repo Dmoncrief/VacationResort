@@ -78,7 +78,7 @@
         <label for="numAdults">Number of Children:</label>
         <input type="number" id="numChildren" name="numChildren" min="0" max="4" required>
       </div>
-      <div>
+      <div >
         <label>Discount:</label><br>
         <input type="radio" id="none" name="discount" value="None">
         <label for="none">None</label><br>
@@ -90,8 +90,10 @@
 
       <input id="submitButton" type="submit" value="Estimate Stay Cost">
     </form>
+
     <div id="messageDiv"></div>
     <div id="estimateField">
+      <label>Total Cost:  </label>
       <input type="text" name= "estimateText" id="finalEstimate" width="20%" disabled >
     </div>
 
